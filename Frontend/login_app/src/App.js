@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import './App.css';
-import LoginForm from './LoginForm';
-import LoginAttemptList from './LoginAttemptList';
+import { LoginForm } from './components/LoginForm';
+import { LoginAttemptList } from "./components/LoginAttemptList";
 
 const App = () => {
   const [loginAttempts, setLoginAttempts] = useState([]);
 
   return (
     <div className="App">
-      <LoginForm onSubmit={({ login, password }) => console.log({ login, password })} />
-      <LoginAttemptList attempts={loginAttempts} />
+      <LoginForm loginAttempts={loginAttempts} setLoginAttempts={setLoginAttempts} />
+      <LoginAttemptList key={loginAttempts.length} loginAttempts={loginAttempts} setLoginAttempts={setLoginAttempts} />
     </div>
   );
 };
